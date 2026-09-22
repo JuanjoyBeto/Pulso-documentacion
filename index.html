@@ -1,0 +1,1189 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Documentación Training Point</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#EDF0F4; --surface:#FFFFFF; --surface-2:#F5F7FA;
+  --ink:#0F1720; --ink-2:#3E4B5A; --muted:#6B7787; --line:#D8DEE6; --line-soft:#E7ECF1;
+  --accent:#0B57C7; --accent-soft:#E3EDFC; --accent-ink:#0B57C7;
+  --done:#0F6B5C; --done-soft:#DDF0EA;
+  --pend:#8A5307; --pend-soft:#FAEBD6;
+  --stop:#A3252B; --stop-soft:#FBE4E5;
+  --shadow:0 1px 2px rgba(15,23,32,.06), 0 8px 24px -12px rgba(15,23,32,.18);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0B1017; --surface:#141B24; --surface-2:#1A222C;
+    --ink:#E8EEF6; --ink-2:#BAC6D4; --muted:#8493A4; --line:#26313D; --line-soft:#1E2732;
+    --accent:#5FA3FF; --accent-soft:#152740; --accent-ink:#8FBEFF;
+    --done:#4CC5AC; --done-soft:#0F2B27;
+    --pend:#E5A85C; --pend-soft:#2C2317;
+    --stop:#F08A8F; --stop-soft:#2E1719;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0B1017; --surface:#141B24; --surface-2:#1A222C;
+  --ink:#E8EEF6; --ink-2:#BAC6D4; --muted:#8493A4; --line:#26313D; --line-soft:#1E2732;
+  --accent:#5FA3FF; --accent-soft:#152740; --accent-ink:#8FBEFF;
+  --done:#4CC5AC; --done-soft:#0F2B27;
+  --pend:#E5A85C; --pend-soft:#2C2317;
+  --stop:#F08A8F; --stop-soft:#2E1719;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+}
+
+*{box-sizing:border-box;}
+body{margin:0; background:var(--paper); color:var(--ink);
+  font-family:"Barlow","Helvetica Neue",Arial,sans-serif; font-size:15.5px; line-height:1.62;
+  -webkit-font-smoothing:antialiased;}
+
+.masthead{background:var(--surface); border-bottom:1px solid var(--line);}
+.masthead .inner{max-width:1280px; margin:0 auto; padding:30px 24px 26px; display:flex; flex-direction:column; gap:11px;}
+.eyebrow{font-family:"Archivo",sans-serif; font-size:11px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--accent-ink);}
+h1{font-family:"Archivo",sans-serif; font-weight:800; letter-spacing:-.022em; font-size:clamp(28px,4.6vw,42px); line-height:1.05; margin:0; text-wrap:balance;}
+.tagline{margin:0; color:var(--ink-2); font-size:16.5px; max-width:66ch;}
+.mastmeta{display:flex; flex-wrap:wrap; gap:7px 20px; font-size:13.5px; color:var(--muted); margin-top:3px;}
+.mastmeta b{color:var(--ink-2); font-weight:600;}
+.mastmeta a{color:var(--accent-ink);}
+
+.layout{max-width:1280px; margin:0 auto; padding:0 24px 80px; display:grid; grid-template-columns:252px 1fr; gap:44px; align-items:start;}
+@media (max-width:940px){ .layout{grid-template-columns:1fr; gap:20px; padding-top:8px;} }
+
+/* -------- sidebar -------- */
+.toc{position:sticky; top:18px; margin-top:26px; max-height:calc(100vh - 40px); overflow-y:auto;
+  background:var(--surface); border:1px solid var(--line); border-radius:11px; padding:15px 8px 15px 15px; box-shadow:var(--shadow);}
+.toc h2{font-family:"Archivo",sans-serif; font-size:10.5px; font-weight:700; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); margin:0 0 10px;}
+.toc ol{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:1px; counter-reset:s;}
+.toc a{display:flex; gap:9px; text-decoration:none; color:var(--ink-2); font-size:13.5px; padding:5px 8px; border-radius:6px; line-height:1.35;}
+.toc a .n{font-family:"IBM Plex Mono",monospace; font-size:11.5px; color:var(--muted); flex:none; padding-top:1px;}
+.toc a:hover{background:var(--surface-2); color:var(--ink);}
+.toc a.on{background:var(--accent-soft); color:var(--accent-ink); font-weight:600;}
+.toc a.on .n{color:var(--accent-ink);}
+.toc a:focus-visible{outline:2px solid var(--accent); outline-offset:1px;}
+@media (max-width:940px){ .toc{position:static; max-height:none; margin-top:14px;} }
+
+/* -------- content -------- */
+main{min-width:0; display:flex; flex-direction:column; gap:26px; padding-top:26px;}
+section.doc{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:26px 30px 30px; box-shadow:var(--shadow); scroll-margin-top:16px;}
+@media (max-width:620px){ section.doc{padding:20px 17px 24px;} .layout{padding:0 14px 60px;} }
+
+section.doc > h2{font-family:"Archivo",sans-serif; font-size:24px; font-weight:800; letter-spacing:-.018em; margin:0 0 6px; line-height:1.16; text-wrap:balance;}
+section.doc > h2 .num{color:var(--accent-ink); font-family:"IBM Plex Mono",monospace; font-size:16px; font-weight:500; margin-right:9px; letter-spacing:0;}
+.lead{margin:0 0 20px; color:var(--muted); font-size:15px; max-width:74ch;}
+h3{font-family:"Archivo",sans-serif; font-size:16.5px; font-weight:700; margin:26px 0 8px; letter-spacing:-.006em;}
+h4{font-family:"Archivo",sans-serif; font-size:14px; font-weight:700; margin:20px 0 6px; color:var(--ink-2);}
+p{margin:0 0 12px; max-width:74ch;}
+ul,ol{margin:0 0 13px; padding-left:21px; max-width:74ch;}
+li{margin-bottom:5px;}
+li::marker{color:var(--muted);}
+b,strong{font-weight:600;}
+code{font-family:"IBM Plex Mono",monospace; font-size:.87em; background:var(--surface-2); border:1px solid var(--line-soft); padding:1px 5px; border-radius:5px; color:var(--accent-ink);}
+a{color:var(--accent-ink);}
+hr{border:none; border-top:1px solid var(--line-soft); margin:26px 0;}
+
+.tscroll{overflow-x:auto; margin:0 0 15px;}
+table{border-collapse:collapse; width:100%; min-width:560px; font-size:14px;}
+th{font-family:"Archivo",sans-serif; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); text-align:left; padding:9px 11px; border-bottom:1px solid var(--line); white-space:nowrap;}
+td{padding:9px 11px; border-bottom:1px solid var(--line-soft); vertical-align:top;}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:hover td{background:var(--surface-2);}
+td.mono,th.mono{font-family:"IBM Plex Mono",monospace; font-size:12.5px; white-space:nowrap; color:var(--accent-ink);}
+td.num{text-align:right; font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums; white-space:nowrap;}
+th.num{text-align:right;}
+tr.tot td{background:var(--surface-2); font-weight:600; border-top:2px solid var(--line);}
+
+.tag{display:inline-block; font-family:"Archivo",sans-serif; font-size:9.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:2px 7px; border-radius:5px; white-space:nowrap;}
+.tag.alta{background:var(--stop-soft); color:var(--stop);}
+.tag.media{background:var(--pend-soft); color:var(--pend);}
+.tag.baja{background:var(--surface-2); color:var(--muted);}
+.tag.ok{background:var(--done-soft); color:var(--done);}
+
+pre{background:var(--surface-2); border:1px solid var(--line); border-radius:9px; padding:15px 17px; overflow-x:auto; margin:0 0 15px;}
+pre code{background:none; border:none; padding:0; font-size:12.5px; color:var(--ink-2); line-height:1.62;}
+
+.callout{border-left:3px solid var(--accent); background:var(--surface-2); padding:13px 17px; border-radius:0 9px 9px 0; margin:0 0 16px;}
+.callout.warn{border-left-color:var(--pend);}
+.callout.stop{border-left-color:var(--stop);}
+.callout p:last-child{margin-bottom:0;}
+.callout .ct{font-family:"Archivo",sans-serif; font-size:11px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--accent-ink); display:block; margin-bottom:5px;}
+.callout.warn .ct{color:var(--pend);} .callout.stop .ct{color:var(--stop);}
+
+/* árbol de problemas */
+.tree{display:flex; flex-direction:column; gap:11px; margin:0 0 20px;}
+.tnode{border:1px solid var(--line); border-radius:10px; padding:14px 17px; background:var(--surface-2);}
+.tnode.core{background:var(--stop-soft); border-color:var(--stop); }
+.tnode.core .tlab{color:var(--stop);}
+.tnode.sol{background:var(--done-soft); border-color:var(--done);}
+.tnode.sol .tlab{color:var(--done);}
+.tlab{font-family:"Archivo",sans-serif; font-size:10.5px; font-weight:700; letter-spacing:.11em; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:6px;}
+.tnode p{margin:0; font-size:15px;}
+.tnode.core p{font-weight:600; font-size:16px; max-width:70ch;}
+.tarrow{text-align:center; color:var(--muted); font-size:17px; line-height:1;}
+
+.grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:15px; margin:0 0 16px;}
+.minicard{border:1px solid var(--line); border-radius:10px; padding:15px 17px; background:var(--surface-2);}
+.minicard h4{margin:0 0 7px;}
+.minicard p{margin:0; font-size:14px; color:var(--ink-2);}
+.minicard ul{margin:0; padding-left:19px; font-size:14px;}
+
+.kpi{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden; margin:0 0 18px;}
+.kpi div{background:var(--surface); padding:13px 15px;}
+.kpi .k{font-family:"Archivo",sans-serif; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:3px;}
+.kpi .v{font-family:"Archivo",sans-serif; font-size:22px; font-weight:700; font-variant-numeric:tabular-nums; letter-spacing:-.01em;}
+.kpi .v small{font-size:13px; color:var(--muted); font-weight:600;}
+
+.minuta{border:1px solid var(--line); border-radius:10px; overflow:hidden; margin:0 0 16px;}
+.minuta .mh{background:var(--surface-2); padding:11px 16px; border-bottom:1px solid var(--line); font-family:"Archivo",sans-serif; font-size:13.5px; font-weight:700;}
+.minuta dl{margin:0; padding:14px 16px; display:grid; grid-template-columns:auto 1fr; gap:7px 16px; font-size:14px;}
+.minuta dt{font-family:"Archivo",sans-serif; font-size:10px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); padding-top:4px; white-space:nowrap;}
+.minuta dd{margin:0; color:var(--ink-2);}
+.minuta dd ul{margin:0; padding-left:18px;}
+
+.embed{border:1px solid var(--line); border-radius:10px; overflow:hidden; background:var(--surface-2); margin:0 0 9px;}
+.embed iframe{display:block; width:100%; height:600px; border:0;}
+@media (max-width:620px){ .embed iframe{height:440px;} }
+.embnote{font-size:13.5px; color:var(--muted); margin:0 0 18px;}
+.embph{padding:30px 22px; text-align:center;}
+.embph .epk{font-family:"Archivo",sans-serif; font-size:10.5px; font-weight:700; letter-spacing:.11em; text-transform:uppercase; color:var(--accent-ink); display:block; margin-bottom:8px;}
+.embph p{margin:0 auto 14px; max-width:52ch;}
+.embph button{font-family:"Archivo",sans-serif; font-size:13.5px; font-weight:700; color:#fff; background:var(--accent); border:0; border-radius:8px; padding:10px 20px; cursor:pointer;}
+.embph button:hover{filter:brightness(1.08);}
+.embph .epa{font-size:13.5px; margin:12px 0 0;}
+
+.manuales{display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:15px; margin:0 0 18px;}
+.mcard{display:block; border:1px solid var(--line); border-radius:10px; padding:16px 18px; background:var(--surface-2); text-decoration:none; color:inherit;}
+.mcard:hover{border-color:var(--accent); background:var(--accent-soft);}
+.mcard .mt{font-family:"Archivo",sans-serif; font-weight:700; font-size:15px; display:block; margin-bottom:5px; color:var(--accent-ink);}
+.mcard .md{font-size:14px; color:var(--ink-2); display:block; margin-bottom:7px;}
+.mcard .mu{font-family:"IBM Plex Mono",monospace; font-size:11.5px; color:var(--muted); word-break:break-all;}
+
+footer.docfoot{max-width:1280px; margin:0 auto; padding:22px 24px 60px; color:var(--muted); font-size:13.5px; border-top:1px solid var(--line);}
+footer.docfoot b{color:var(--ink-2);}
+
+@media print{ .toc{display:none;} .layout{grid-template-columns:1fr;} body{background:#fff;} section.doc{break-inside:avoid; box-shadow:none;} }
+@media (prefers-reduced-motion: reduce){ *{scroll-behavior:auto !important;} }
+html{scroll-behavior:smooth;}
+</style>
+
+<div class="masthead">
+  <div class="inner">
+    <div class="eyebrow">Documentación del proyecto · 7° Informática A</div>
+    <h1>Training Point — sistema de reserva y pago de clases</h1>
+    <p class="tagline">Aplicación web que reemplaza el cuaderno de papel con el que Dami administraba los turnos, la asistencia y los pagos de su gimnasio de entrenamiento funcional.</p>
+    <div class="mastmeta">
+      <span><b>Equipo:</b> Juan José Bosio · Joaquín Goyechea</span>
+      <span><b>Cliente:</b> Dami — entrenamiento funcional</span>
+      <span><b>Sistema:</b> <a href="https://newlogin.alwaysdata.net">newlogin.alwaysdata.net</a></span>
+      <span><b>Versión:</b> 1.0 — beta en testing</span>
+      <span><b>Actualizado:</b> 17/09/2026</span>
+    </div>
+  </div>
+</div>
+
+<div class="layout">
+
+  <nav class="toc" aria-label="Índice de la documentación">
+    <h2>Contenido</h2>
+    <ol>
+      <li><a href="#s1"><span class="n">01</span><span>Control de cambios</span></a></li>
+      <li><a href="#s2"><span class="n">02</span><span>Árbol de problemas y soluciones</span></a></li>
+      <li><a href="#s3"><span class="n">03</span><span>Introducción</span></a></li>
+      <li><a href="#s4"><span class="n">04</span><span>Descripción general</span></a></li>
+      <li><a href="#s5"><span class="n">05</span><span>Requisitos específicos</span></a></li>
+      <li><a href="#s6"><span class="n">06</span><span>Oferta de gestión</span></a></li>
+      <li><a href="#s7"><span class="n">07</span><span>Oferta económica</span></a></li>
+      <li><a href="#s8"><span class="n">08</span><span>Estimación económica</span></a></li>
+      <li><a href="#s9"><span class="n">09</span><span>Contrato</span></a></li>
+      <li><a href="#s10"><span class="n">10</span><span>Bitácora del proyecto</span></a></li>
+      <li><a href="#s11"><span class="n">11</span><span>Garantía y soporte</span></a></li>
+      <li><a href="#s12"><span class="n">12</span><span>Documentación de uso</span></a></li>
+    </ol>
+  </nav>
+
+  <main>
+
+  <!-- ============ 1 ============ -->
+  <section class="doc" id="s1">
+    <h2><span class="num">01</span>Control de cambios</h2>
+    <p class="lead">Modificaciones de alcance validadas con el cliente a lo largo del proyecto.</p>
+    <div class="tscroll"><table>
+      <thead><tr><th class="mono">Ver.</th><th>Fecha</th><th>Responsable</th><th>Detalle del cambio</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">0.1</td><td>16/05/26</td><td>Bosio / Goyechea</td><td>Definición inicial del proyecto y presentación del caso.</td></tr>
+        <tr><td class="mono">0.2</td><td>25/05/26</td><td>Bosio / Goyechea</td><td>Cambio de alcance: el producto pasa de app móvil nativa a aplicación web responsive. Motivo: publicar en Google Play y App Store tiene costo de mantenimiento anual que el cliente no quiere asumir.</td></tr>
+        <tr><td class="mono">0.3</td><td>20/06/26</td><td>Bosio / Goyechea</td><td>Mockup validado con el cliente. Se replica la identidad visual del diseño previo que Dami tenía en Figma en lugar de crear una nueva.</td></tr>
+        <tr><td class="mono">0.4</td><td>02/07/26</td><td>Bosio / Goyechea</td><td>MVP publicado en servidor y presentado. Login, registro y base de datos operativos.</td></tr>
+        <tr><td class="mono">0.5</td><td>24/07/26</td><td>Bosio / Goyechea</td><td>Cambio de diseño del QR: pasa de identificar solo al alumno a identificar alumno + clase. Motivo: en la prueba real un alumno inscripto a dos clases siempre registraba la asistencia en la equivocada.</td></tr>
+        <tr><td class="mono">0.6</td><td>04/08/26</td><td>Bosio / Goyechea</td><td>Cambio de método de pago: se descarta la integración con MercadoPago y se implementa transferencia bancaria por alias más efectivo. Motivo: el cliente no posee cuenta de empresa y no acepta la comisión por operación.</td></tr>
+        <tr><td class="mono">0.7</td><td>13/08/26</td><td>Bosio / Goyechea</td><td>El vencimiento de los créditos pasa de fijo (fin de mes) a configurable por el administrador, a pedido del cliente.</td></tr>
+        <tr><td class="mono">1.0</td><td>25/08/26</td><td>Bosio / Goyechea</td><td>Cierre de la versión beta. Sistema entregado al cliente para el período de testing.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- ============ 2 ============ -->
+  <section class="doc" id="s2">
+    <h2><span class="num">02</span>Diagnóstico: árbol de problemas y soluciones</h2>
+    <p class="lead">Todo lo que el sistema hace se justifica acá. Cada requisito de la sección 05 responde a una de estas causas.</p>
+
+    <h3>Problema central</h3>
+    <div class="tree">
+      <div class="tnode core">
+        <span class="tlab">Problema</span>
+        <p>Dami administra los turnos, la asistencia y los pagos de sus clases anotándolos a mano en un cuaderno, por lo que pierde información, tiempo de trabajo y dinero.</p>
+      </div>
+    </div>
+
+    <h3>Causas relevadas</h3>
+    <p>Observadas en las entrevistas con el cliente y en la observación de su forma de trabajo.</p>
+    <div class="tscroll"><table>
+      <thead><tr><th class="mono">ID</th><th>Causa</th><th>Cómo se manifiesta</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">C1</td><td>Las reservas se anotan a mano</td><td>Los alumnos avisan por mensajes sueltos y Dami los pasa al cuaderno uno por uno. No existe una lista confiable de quién asiste a cada clase.</td></tr>
+        <tr><td class="mono">C2</td><td>No hay control del cupo por clase</td><td>Nadie sabe cuántos lugares quedan hasta que la gente llega al gimnasio.</td></tr>
+        <tr><td class="mono">C3</td><td>No hay registro de clases pagadas ni de su vencimiento</td><td>Dami recuerda de memoria quién abonó el mes y cuántas clases le quedan.</td></tr>
+        <tr><td class="mono">C4</td><td>La asistencia se toma a ojo</td><td>No queda constancia de quién efectivamente asistió a cada clase.</td></tr>
+        <tr><td class="mono">C5</td><td>Los pagos se registran en el mismo cuaderno, sin comprobante</td><td>Ni el alumno ni Dami tienen un respaldo de lo que se pagó y cuándo.</td></tr>
+        <tr><td class="mono">C6</td><td>El apto médico se pide de palabra</td><td>No queda archivado en ningún lado ni hay forma de verificar quién lo presentó.</td></tr>
+        <tr><td class="mono">C7</td><td>La comunicación con los alumnos es uno a uno</td><td>Para avisar un cambio de horario, Dami escribe mensajes individuales.</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="tarrow">↓</div>
+
+    <h3>Efectos — línea base antes del sistema</h3>
+    <div class="tscroll"><table>
+      <thead><tr><th class="mono">ID</th><th>Efecto</th><th>Consecuencia para el cliente</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">E1</td><td>Clases sobrevendidas o con lugares vacíos</td><td>Se pierde calidad de clase cuando hay de más, y se pierde facturación cuando hay de menos.</td></tr>
+        <tr><td class="mono">E2</td><td>Alumnos entrenando sin haber pagado o con el mes vencido</td><td>Pérdida directa de ingresos, difícil de detectar y de reclamar sin registro.</td></tr>
+        <tr><td class="mono">E3</td><td>Tiempo del profesor dedicado a tareas administrativas</td><td>Horas que se restan a dar clase y a conseguir alumnos nuevos.</td></tr>
+        <tr><td class="mono">E4</td><td>Sin historial de asistencia</td><td>No puede detectar al alumno que dejó de venir ni actuar antes de perderlo.</td></tr>
+        <tr><td class="mono">E5</td><td>Riesgo por falta de apto médico archivado</td><td>Exposición legal ante un accidente durante el entrenamiento.</td></tr>
+        <tr><td class="mono">E6</td><td>Avisos que no llegan a todos</td><td>Alumnos que se presentan a una clase cancelada o reprogramada.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Árbol de soluciones</h3>
+    <p>Cada medio neutraliza una o más causas. La columna de la derecha indica cuáles.</p>
+    <div class="tscroll"><table>
+      <thead><tr><th class="mono">ID</th><th>Medio implementado</th><th class="mono">Neutraliza</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">M1</td><td>Reserva en línea por el propio alumno, con cupo máximo por clase</td><td class="mono">C1, C2</td></tr>
+        <tr><td class="mono">M2</td><td>Paquetes de créditos con vencimiento configurable, descontados automáticamente al reservar</td><td class="mono">C3</td></tr>
+        <tr><td class="mono">M3</td><td>Asistencia por código QR único por inscripción</td><td class="mono">C4</td></tr>
+        <tr><td class="mono">M4</td><td>Registro de abonos con aviso automático al administrador y comprobante en el historial</td><td class="mono">C5</td></tr>
+        <tr><td class="mono">M5</td><td>Carga del apto médico en el perfil, archivado y consultable por el administrador</td><td class="mono">C6</td></tr>
+        <tr><td class="mono">M6</td><td>Sistema de avisos con tres modalidades: a todos, a un alumno o a los inscriptos a una clase</td><td class="mono">C7</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="tarrow">↓</div>
+
+    <div class="tree">
+      <div class="tnode sol">
+        <span class="tlab">Objetivo general</span>
+        <p>Que Dami administre la totalidad de sus clases, cobros y asistencias desde una aplicación web, sin depender de anotaciones en papel ni de su memoria.</p>
+      </div>
+    </div>
+
+    <h3>Objetivos específicos y medición</h3>
+    <div class="tscroll"><table>
+      <thead><tr><th class="mono">ID</th><th>Objetivo</th><th>Cómo se verifica</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">O1</td><td>Eliminar el cuaderno como registro de reservas</td><td>El 100 % de las inscripciones del período de prueba se realizan desde el sistema.</td></tr>
+        <tr><td class="mono">O2</td><td>Que ninguna clase supere su cupo</td><td>El sistema bloquea la inscripción al llegar a la capacidad definida.</td></tr>
+        <tr><td class="mono">O3</td><td>Que ningún alumno entrene sin créditos vigentes</td><td>La inscripción exige crédito disponible y no vencido.</td></tr>
+        <tr><td class="mono">O4</td><td>Tener trazabilidad completa de la asistencia</td><td>Cada asistencia queda registrada con alumno, clase y fecha al escanear el QR.</td></tr>
+        <tr><td class="mono">O5</td><td>Tener el apto médico de cada alumno archivado</td><td>El administrador puede abrir el archivo desde el perfil del alumno.</td></tr>
+        <tr><td class="mono">O6</td><td>Reducir el tiempo administrativo del profesor</td><td>La carga de clases de un mes completo pasa de una por una a una sola operación (clases recurrentes).</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- ============ 3 ============ -->
+  <section class="doc" id="s3">
+    <h2><span class="num">03</span>Introducción</h2>
+
+    <h3>3.1 Propósito</h3>
+    <p>Este documento describe de forma completa el sistema <b>Training Point</b>: qué problema resuelve, qué requisitos cumple, cómo está construido, cuánto cuesta y bajo qué condiciones se entrega. Está dirigido al cliente, al equipo de desarrollo y a la cátedra que evalúa el proyecto.</p>
+
+    <h3>3.2 Alcance</h3>
+    <h4>El sistema incluye</h4>
+    <ul>
+      <li>Registro e inicio de sesión de alumnos, con opción de cuenta de Google y recuperación de contraseña por correo.</li>
+      <li>Publicación de clases con fecha, horario y cupo, individuales o generadas de forma recurrente.</li>
+      <li>Compra de paquetes de créditos e inscripción a clases con descuento automático.</li>
+      <li>Control de asistencia mediante código QR por inscripción.</li>
+      <li>Carga y consulta del apto médico.</li>
+      <li>Panel de administración con la gestión completa de alumnos, clases, créditos y avisos.</li>
+    </ul>
+    <h4>El sistema no incluye</h4>
+    <ul>
+      <li>Cobro automático en línea: el pago se realiza por transferencia o en efectivo y el administrador acredita los créditos.</li>
+      <li>Aplicación móvil nativa para Android o iOS.</li>
+      <li>Facturación electrónica ni integración con AFIP.</li>
+      <li>Gestión de más de una sede o disciplina.</li>
+      <li>Envío de mensajes por WhatsApp.</li>
+    </ul>
+
+    <h3>3.3 Personal involucrado</h3>
+    <div class="tscroll"><table>
+      <thead><tr><th class="mono">Rol</th><th>Función</th><th>Responsable</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">PM</td><td>Project Manager — relevamiento, relación con el cliente y planificación</td><td>Bosio / Goyechea</td></tr>
+        <tr><td class="mono">BD</td><td>Administrador de base de datos — modelo de datos y servidor</td><td>Bosio / Goyechea</td></tr>
+        <tr><td class="mono">DUX</td><td>Diseñador UX/UI — mockup, identidad visual e interfaz</td><td>Bosio / Goyechea</td></tr>
+        <tr><td class="mono">D01</td><td>Desarrollador back end — lógica de negocio y API</td><td>Bosio / Goyechea</td></tr>
+        <tr><td class="mono">D02</td><td>Desarrollador front/back — panel administrativo y notificaciones</td><td>Bosio / Goyechea</td></tr>
+        <tr><td class="mono">D03</td><td>Desarrollador front end — interfaz del alumno y responsive</td><td>Bosio / Goyechea</td></tr>
+        <tr><td class="mono">Cliente</td><td>Define los requisitos y valida las entregas</td><td>Dami</td></tr>
+      </tbody>
+    </table></div>
+    <p>El equipo está formado por dos personas que se reparten los seis roles definidos por la cátedra.</p>
+
+    <h3>3.4 Definiciones, acrónimos y abreviaturas</h3>
+    <div class="tscroll"><table>
+      <thead><tr><th>Término</th><th>Significado</th></tr></thead>
+      <tbody>
+        <tr><td><b>Crédito</b> (o ticket)</td><td>Unidad que habilita la inscripción a una clase. Se compra en paquetes y se descuenta al reservar.</td></tr>
+        <tr><td><b>Paquete o pack</b></td><td>Conjunto de créditos que el alumno compra: 4, 8 o 12 según lo definido por el cliente.</td></tr>
+        <tr><td><b>Vencimiento</b></td><td>Fecha a partir de la cual los créditos no usados dejan de ser válidos. No se acumulan al período siguiente.</td></tr>
+        <tr><td><b>Apto médico</b></td><td>Certificado que habilita al alumno a entrenar. Se carga una vez y queda archivado.</td></tr>
+        <tr><td><b>QR</b></td><td><i>Quick Response.</i> Código que el alumno presenta y el administrador escanea para registrar la asistencia.</td></tr>
+        <tr><td><b>Alias</b></td><td>Identificador de una cuenta bancaria para recibir transferencias.</td></tr>
+        <tr><td><b>OAuth</b></td><td>Protocolo que permite iniciar sesión con una cuenta de Google sin crear una contraseña nueva.</td></tr>
+        <tr><td><b>MVP</b></td><td><i>Minimum Viable Product.</i> Versión mínima funcional entregada el 02/07/2026.</td></tr>
+        <tr><td><b>Responsive</b></td><td>Diseño que se adapta a la pantalla del celular, la tablet y la computadora.</td></tr>
+        <tr><td><b>SMTP</b></td><td>Protocolo de envío de correo electrónico, usado para los avisos del sistema.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>3.5 Referencias</h3>
+    <ul>
+      <li>Cátedra de Evolución de Proyectos, 7° Informática A — <a href="https://lpedaci.github.io/ev_proy-landing-casos/">Lineamientos y casos de referencia</a>.</li>
+      <li>Cátedra de Evolución de Proyectos — <a href="https://lpedaci.github.io/ev_proy-modulo03-documentacion/">Módulo 03: Documentación del Proyecto</a>.</li>
+      <li>Google Chrome Developers — <a href="https://developer.chrome.com/docs/lighthouse/overview?hl=es-419">Introducción a Lighthouse</a>.</li>
+      <li>Documentación oficial de PHPMailer, Google OAuth 2.0 y html5-qrcode.</li>
+    </ul>
+
+    <h3>3.6 Resumen ejecutivo</h3>
+    <p>Dami dirige un gimnasio de entrenamiento funcional y hasta ahora administraba todo en un cuaderno: quién venía a cada clase, quién había pagado y cuántas clases le quedaban. Ese método le hacía perder ingresos por alumnos sin control de pago, le consumía tiempo que debería dedicar a dar clase y no le dejaba ningún historial para trabajar.</p>
+    <p>Training Point es una aplicación web que traslada toda esa gestión al sistema. El alumno se registra, compra un paquete de créditos, ve las clases disponibles de los próximos 30 días y se inscribe: el crédito se descuenta solo. El día de la clase muestra su código QR y el administrador lo escanea, con lo que la asistencia queda registrada contra esa clase puntual. Dami, desde su panel, carga clases de a una o de a cientos, ve el perfil completo de cada alumno con su historial y su apto médico, acredita los pagos y manda avisos.</p>
+    <p>El sistema está publicado y funcionando en <a href="https://newlogin.alwaysdata.net">newlogin.alwaysdata.net</a>. Se encuentra en período de prueba con el cliente en su lugar de trabajo.</p>
+  </section>
+
+  <!-- ============ 4 ============ -->
+  <section class="doc" id="s4">
+    <h2><span class="num">04</span>Descripción general</h2>
+
+    <h3>4.1 Perspectiva del producto</h3>
+    <p>Training Point es un sistema autónomo: no reemplaza ni se integra a un software preexistente, porque antes del proyecto la gestión era manual. Se construyó sobre una arquitectura web clásica de tres capas, servida por completo desde el hosting.</p>
+    <div class="grid2">
+      <div class="minicard">
+        <h4>Capa de presentación</h4>
+        <p>HTML y CSS sin frameworks, diseño responsive. Es lo que ven el alumno y el administrador desde el navegador del celular o la computadora.</p>
+      </div>
+      <div class="minicard">
+        <h4>Capa de lógica</h4>
+        <p>PHP en el servidor. Resuelve la autenticación, la validación de créditos, la inscripción, la lectura del QR y el envío de correos.</p>
+      </div>
+      <div class="minicard">
+        <h4>Capa de datos</h4>
+        <p>Base MySQL/MariaDB alojada en AlwaysData, con siete tablas relacionadas descriptas en la sección 5.6.</p>
+      </div>
+      <div class="minicard">
+        <h4>Servicios externos</h4>
+        <p>Google OAuth para el ingreso con cuenta de Google, SMTP para los correos, html5-qrcode para leer el código con la cámara y api.qrserver.com para generar la imagen del QR.</p>
+      </div>
+    </div>
+
+    <h3>4.2 Funcionalidad del producto</h3>
+    <ul>
+      <li><b>Gestión de cuentas:</b> registro, ingreso propio o con Google, recuperación de contraseña.</li>
+      <li><b>Gestión de clases:</b> alta individual o recurrente, edición, borrado individual o en lote, cupo por clase.</li>
+      <li><b>Gestión de créditos:</b> compra de paquetes, acreditación por el administrador, vencimiento configurable, descuento y devolución automáticos.</li>
+      <li><b>Reservas:</b> inscripción y cancelación por el alumno dentro de una ventana de 30 días.</li>
+      <li><b>Asistencia:</b> generación de un QR por inscripción y lectura con la cámara desde el panel del administrador.</li>
+      <li><b>Documentación del alumno:</b> carga del apto médico en formato imagen o PDF y consulta por el administrador.</li>
+      <li><b>Comunicación:</b> avisos dentro de la aplicación y por correo, con tres alcances posibles.</li>
+      <li><b>Pagos:</b> instructivo de transferencia con alias copiable, aviso al administrador y opción de pago en efectivo.</li>
+    </ul>
+
+    <h3>4.3 Características de los usuarios</h3>
+    <div class="tscroll"><table>
+      <thead><tr><th>Tipo</th><th>Perfil</th><th>Conocimiento técnico</th><th>Uso esperado</th></tr></thead>
+      <tbody>
+        <tr><td><b>Alumno</b></td><td>Persona que entrena en el gimnasio, de edad y perfil variados.</td><td>Bajo. Usa el celular a diario pero no necesariamente aplicaciones complejas.</td><td>Varias veces por semana, casi siempre desde el celular.</td></tr>
+        <tr><td><b>Administrador</b></td><td>Dami, dueño y profesor del gimnasio.</td><td>Bajo a medio. Necesita que todo se resuelva sin explicaciones técnicas.</td><td>Diario, desde el celular durante la clase y desde la computadora para cargar el mes.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout">
+      <span class="ct">Decisión de diseño</span>
+      <p>Como ambos perfiles tienen conocimiento técnico bajo, toda la interfaz está redactada en lenguaje natural y sin jerga: el sistema dice «te quedan 8 clases» y no «créditos disponibles: 8». El acceso al panel de administración se agregó a la barra inferior del celular porque Dami no lo encontraba en el menú de escritorio.</p>
+    </div>
+
+    <h3>4.4 Restricciones</h3>
+    <div class="tscroll"><table>
+      <thead><tr><th class="mono">ID</th><th>Tipo</th><th>Restricción</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">R1</td><td>Normativa</td><td>Los datos personales de los alumnos se rigen por la Ley 25.326 de Protección de Datos Personales. Solo se almacenan los datos necesarios para operar.</td></tr>
+        <tr><td class="mono">R2</td><td>Hardware</td><td>El registro de asistencia requiere un dispositivo con cámara. No se incorpora hardware propio al proyecto.</td></tr>
+        <tr><td class="mono">R3</td><td>Interfaz</td><td>Debe funcionar en navegadores de celular sin instalar nada. Se descartó la app nativa por el costo de publicación en las tiendas.</td></tr>
+        <tr><td class="mono">R4</td><td>Lenguaje</td><td>Back end en PHP y base MySQL, por ser lo soportado por el hosting disponible y lo conocido por el equipo.</td></tr>
+        <tr><td class="mono">R5</td><td>Protocolos</td><td>HTTPS para toda la navegación y SMTP autenticado para el correo.</td></tr>
+        <tr><td class="mono">R6</td><td>Fiabilidad</td><td>La disponibilidad depende del plan gratuito de AlwaysData, sin garantía de servicio contratada.</td></tr>
+        <tr><td class="mono">R7</td><td>Seguridad</td><td>Contraseñas almacenadas con hash. Permisos verificados por rol en cada pantalla del administrador. Las credenciales del servidor de correo viven en un archivo <code>.env</code> fuera del repositorio.</td></tr>
+        <tr><td class="mono">R8</td><td>Económica</td><td>El cliente no acepta comisiones por operación, lo que condicionó todo el diseño del módulo de pagos.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>4.5 Suposiciones y dependencias</h3>
+    <ul>
+      <li>Se asume que cada alumno tiene un celular con cámara y una casilla de correo activa.</li>
+      <li>Se asume que el administrador verifica las transferencias en su banco antes de acreditar los créditos: el sistema informa el aviso, no confirma el cobro.</li>
+      <li>El sistema depende de servicios de terceros: AlwaysData, Google OAuth, el servidor SMTP y api.qrserver.com. La caída de cualquiera de ellos afecta la función asociada.</li>
+      <li>La disciplina es una sola. Sumar otras requeriría modificar el modelo de datos.</li>
+    </ul>
+
+    <h3>4.6 Evolución previsible</h3>
+    <div class="tscroll"><table>
+      <thead><tr><th class="mono">ID</th><th>Mejora</th><th>Estado</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">F1</td><td>Avisos por WhatsApp mediante la API de WhatsApp Business</td><td><span class="tag media">A definir con el cliente</span> Tiene costo por mensaje y requiere verificar un número comercial.</td></tr>
+        <tr><td class="mono">F2</td><td>Confirmación automática del pago sin intervención manual</td><td><span class="tag baja">Descartado por ahora</span> Toda pasarela cobra comisión.</td></tr>
+        <tr><td class="mono">F3</td><td>Reportes de asistencia y facturación por período</td><td><span class="tag baja">Versión futura</span></td></tr>
+        <tr><td class="mono">F4</td><td>Lista de espera automática cuando una clase se llena</td><td><span class="tag baja">Versión futura</span></td></tr>
+        <tr><td class="mono">F5</td><td>Soporte para más de una disciplina o sede</td><td><span class="tag baja">Versión futura</span></td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- ============ 5 ============ -->
+  <section class="doc" id="s5">
+    <h2><span class="num">05</span>Requisitos específicos</h2>
+
+    <h3>5.1 Requisitos funcionales</h3>
+    <div class="tscroll"><table>
+      <thead><tr><th class="mono">ID</th><th>Requisito</th><th>Prioridad</th><th class="mono">Origen</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">RF01</td><td>El alumno debe poder registrarse con nombre, apellido, correo, usuario, contraseña, teléfono y género.</td><td><span class="tag alta">Alta</span></td><td class="mono">C1</td></tr>
+        <tr><td class="mono">RF02</td><td>El alumno debe poder ingresar con su cuenta de Google.</td><td><span class="tag media">Media</span></td><td class="mono">C1</td></tr>
+        <tr><td class="mono">RF03</td><td>El sistema debe permitir recuperar la contraseña por correo electrónico.</td><td><span class="tag media">Media</span></td><td class="mono">C1</td></tr>
+        <tr><td class="mono">RF04</td><td>El administrador debe poder crear clases indicando fecha, horario y capacidad.</td><td><span class="tag alta">Alta</span></td><td class="mono">C1, C2</td></tr>
+        <tr><td class="mono">RF05</td><td>El administrador debe poder generar clases recurrentes eligiendo días de la semana, horario y rango de fechas.</td><td><span class="tag alta">Alta</span></td><td class="mono">C1</td></tr>
+        <tr><td class="mono">RF06</td><td>El administrador debe poder borrar clases de a una o seleccionando varias a la vez.</td><td><span class="tag media">Media</span></td><td class="mono">C1</td></tr>
+        <tr><td class="mono">RF07</td><td>El alumno debe ver las clases disponibles de los próximos 30 días con su cupo restante.</td><td><span class="tag alta">Alta</span></td><td class="mono">C2</td></tr>
+        <tr><td class="mono">RF08</td><td>El alumno debe poder inscribirse a una clase si tiene crédito disponible y no vencido.</td><td><span class="tag alta">Alta</span></td><td class="mono">C2, C3</td></tr>
+        <tr><td class="mono">RF09</td><td>El sistema debe descontar un crédito al inscribirse y devolverlo si el alumno cancela antes de registrar asistencia.</td><td><span class="tag alta">Alta</span></td><td class="mono">C3</td></tr>
+        <tr><td class="mono">RF10</td><td>El sistema debe impedir la inscripción cuando la clase alcanzó su capacidad.</td><td><span class="tag alta">Alta</span></td><td class="mono">C2</td></tr>
+        <tr><td class="mono">RF11</td><td>El administrador debe poder acreditar créditos a un alumno definiendo la fecha de vencimiento.</td><td><span class="tag alta">Alta</span></td><td class="mono">C3, C5</td></tr>
+        <tr><td class="mono">RF12</td><td>El sistema debe generar un código QR distinto por cada inscripción, que identifique al alumno y a la clase.</td><td><span class="tag alta">Alta</span></td><td class="mono">C4</td></tr>
+        <tr><td class="mono">RF13</td><td>El administrador debe poder escanear el QR con la cámara y registrar la asistencia.</td><td><span class="tag alta">Alta</span></td><td class="mono">C4</td></tr>
+        <tr><td class="mono">RF14</td><td>El alumno debe poder subir su apto médico en formato JPG, PNG o PDF.</td><td><span class="tag alta">Alta</span></td><td class="mono">C6</td></tr>
+        <tr><td class="mono">RF15</td><td>El administrador debe poder abrir el apto médico desde el perfil del alumno.</td><td><span class="tag alta">Alta</span></td><td class="mono">C6</td></tr>
+        <tr><td class="mono">RF16</td><td>El administrador debe ver el perfil completo del alumno: datos, créditos, apto médico, historial de clases y de abonos.</td><td><span class="tag alta">Alta</span></td><td class="mono">C4, E4</td></tr>
+        <tr><td class="mono">RF17</td><td>El alumno debe poder comprar un paquete, ver el alias con un botón para copiarlo y avisar que transfirió.</td><td><span class="tag alta">Alta</span></td><td class="mono">C5</td></tr>
+        <tr><td class="mono">RF18</td><td>El sistema debe avisar al administrador, dentro de la aplicación y por correo, cuando un alumno informa un pago.</td><td><span class="tag alta">Alta</span></td><td class="mono">C5</td></tr>
+        <tr><td class="mono">RF19</td><td>El administrador debe poder enviar avisos a todos los alumnos, a uno solo o a los inscriptos a una clase.</td><td><span class="tag media">Media</span></td><td class="mono">C7</td></tr>
+        <tr><td class="mono">RF20</td><td>El sistema debe ofrecer el pago en efectivo en el gimnasio con el mismo mecanismo de aviso.</td><td><span class="tag media">Media</span></td><td class="mono">C5</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>5.2 Requisitos no funcionales</h3>
+    <div class="tscroll"><table>
+      <thead><tr><th class="mono">ID</th><th>Requisito</th><th>Prioridad</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">RNF01</td><td>La interfaz debe ser usable desde un celular sin instalar ninguna aplicación.</td><td><span class="tag alta">Alta</span></td></tr>
+        <tr><td class="mono">RNF02</td><td>Los textos deben estar en lenguaje natural, sin términos técnicos.</td><td><span class="tag alta">Alta</span></td></tr>
+        <tr><td class="mono">RNF03</td><td>Las contraseñas deben almacenarse cifradas, nunca en texto plano.</td><td><span class="tag alta">Alta</span></td></tr>
+        <tr><td class="mono">RNF04</td><td>Cada pantalla del panel administrativo debe verificar el rol antes de mostrar información.</td><td><span class="tag alta">Alta</span></td></tr>
+        <tr><td class="mono">RNF05</td><td>El apto médico no puede superar los 5 MB por archivo.</td><td><span class="tag media">Media</span></td></tr>
+        <tr><td class="mono">RNF06</td><td>Los correos deben salir hacia la dirección que cada persona cargó al registrarse, no a una casilla fija.</td><td><span class="tag media">Media</span></td></tr>
+        <tr><td class="mono">RNF07</td><td>El sistema debe funcionar en las versiones actuales de Chrome, Safari y Firefox.</td><td><span class="tag media">Media</span></td></tr>
+        <tr><td class="mono">RNF08</td><td>Las credenciales de servicios externos no deben quedar versionadas en el repositorio.</td><td><span class="tag alta">Alta</span></td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>5.3 Limitaciones del alcance</h3>
+    <p>Lo que el sistema deliberadamente <b>no</b> hace en esta versión.</p>
+    <div class="tscroll"><table>
+      <thead><tr><th class="mono">ID</th><th>Limitación</th><th>Motivo</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">LIM01</td><td>No cobra automáticamente: el administrador acredita los créditos a mano tras verificar el pago.</td><td>El cliente no acepta la comisión de las pasarelas ni tiene cuenta de empresa.</td></tr>
+        <tr><td class="mono">LIM02</td><td>No emite factura ni comprobante fiscal.</td><td>Fuera del alcance acordado.</td></tr>
+        <tr><td class="mono">LIM03</td><td>No envía mensajes por WhatsApp.</td><td>La API oficial es paga y requiere verificación comercial.</td></tr>
+        <tr><td class="mono">LIM04</td><td>Los créditos no se acumulan de un período al siguiente.</td><td>Regla de negocio definida por el cliente.</td></tr>
+        <tr><td class="mono">LIM05</td><td>El alumno no puede inscribirse a clases a más de 30 días vista.</td><td>El administrador carga el año completo; sin este límite un alumno podría reservar en enero una clase de diciembre.</td></tr>
+        <tr><td class="mono">LIM06</td><td>Maneja una sola disciplina y una sola sede.</td><td>El cliente tiene un único gimnasio de entrenamiento funcional.</td></tr>
+        <tr><td class="mono">LIM07</td><td>No hay aplicación nativa en Google Play ni App Store.</td><td>Costo de publicación y mantenimiento anual rechazado por el cliente.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>5.4 Requisitos de interfaz de usuario</h3>
+    <p>La interfaz replica la identidad visual que el cliente ya tenía definida en un diseño previo de Figma: fondo oscuro, logo con el pin azul y tipografía propia. Se conservó esa línea en lugar de proponer una nueva, por pedido explícito del cliente.</p>
+    <p>El mockup completo se construyó en HTML y CSS —no solo como imagen— con todas las pantallas: login, registro, home, listado de clases, QR, perfil y panel de administración. Fue validado con el cliente el 20/06/2026 antes de empezar a programar sobre el servidor real.</p>
+    <div class="callout">
+      <span class="ct">Enlace pendiente</span>
+      <p>Colocar acá el enlace al mockup navegable o a las capturas de las pantallas antes de la entrega del 30/09.</p>
+    </div>
+
+    <h3>5.5 Interfaces de hardware</h3>
+    <p>El proyecto <b>no incorpora hardware propio</b>. La única dependencia de hardware es la cámara del dispositivo del administrador, que se utiliza para leer el código QR a través del navegador mediante la biblioteca html5-qrcode. No se requiere lector dedicado, tótem ni dispositivo adicional.</p>
+
+    <h3>5.6 Interfaces de software</h3>
+    <div class="tscroll"><table>
+      <thead><tr><th>Componente</th><th>Tecnología</th><th>Función en el sistema</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">ISW01</td><td>PHP</td><td>Lógica de negocio, sesiones y validaciones del lado del servidor.</td></tr>
+        <tr><td class="mono">ISW02</td><td>MySQL / MariaDB</td><td>Persistencia de usuarios, clases, inscripciones, asistencias, abonos y notificaciones.</td></tr>
+        <tr><td class="mono">ISW03</td><td>HTML5 y CSS3</td><td>Interfaz responsive, sin frameworks.</td></tr>
+        <tr><td class="mono">ISW04</td><td>PHPMailer</td><td>Envío de correos de recuperación de contraseña y avisos.</td></tr>
+        <tr><td class="mono">ISW05</td><td>Google OAuth 2.0</td><td>Inicio de sesión con cuenta de Google.</td></tr>
+        <tr><td class="mono">ISW06</td><td>html5-qrcode</td><td>Lectura del código QR con la cámara desde el navegador.</td></tr>
+        <tr><td class="mono">ISW07</td><td>api.qrserver.com</td><td>Generación de la imagen del código QR de cada inscripción.</td></tr>
+        <tr><td class="mono">ISW08</td><td>Composer</td><td>Gestión de las dependencias de PHP, instaladas por SSH en el servidor.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>5.7 Interfaces de comunicación</h3>
+    <div class="tscroll"><table>
+      <thead><tr><th>Interfaz</th><th>Protocolo</th><th>Detalle</th></tr></thead>
+      <tbody>
+        <tr><td>Navegador ↔ servidor</td><td>HTTPS</td><td>Toda la navegación y el envío de formularios.</td></tr>
+        <tr><td>Servidor ↔ correo</td><td>SMTP autenticado</td><td>Credenciales en <code>.env</code>, fuera del repositorio.</td></tr>
+        <tr><td>Servidor ↔ Google</td><td>OAuth 2.0 sobre HTTPS</td><td>Intercambio de token para el ingreso con cuenta de Google.</td></tr>
+        <tr><td>Equipo ↔ servidor</td><td>SSH y FTP</td><td>SSH para instalar dependencias y ejecutar comandos; FTP para subir archivos.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>5.8 Modelo de datos</h3>
+    <p>La base <code>newlogin_bosio_goyechea</code> está compuesta por siete tablas.</p>
+    <div class="tscroll"><table>
+      <thead><tr><th>Tabla</th><th>Función</th><th>Se relaciona con</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">registronuevo</td><td>Usuarios del sistema, alumnos y administradores. Guarda el rol, los créditos, su vencimiento y el apto médico.</td><td>inscripciones, asistencias, abonos, notificaciones</td></tr>
+        <tr><td class="mono">clases</td><td>Clases publicadas con fecha, horario, capacidad y estado.</td><td>inscripciones, asistencias</td></tr>
+        <tr><td class="mono">inscripciones</td><td>Relación entre un alumno y una clase. Cada fila genera su propio código QR.</td><td>registronuevo, clases</td></tr>
+        <tr><td class="mono">asistencias</td><td>Registro de presentes. Se completa al escanear el QR.</td><td>registronuevo, clases</td></tr>
+        <tr><td class="mono">abonos</td><td>Historial de paquetes comprados por cada alumno.</td><td>registronuevo</td></tr>
+        <tr><td class="mono">notificaciones</td><td>Avisos con destinatario individual: se inserta una fila por cada alumno.</td><td>registronuevo</td></tr>
+        <tr><td class="mono">recuperar</td><td>Tokens temporales para restablecer la contraseña.</td><td>registronuevo</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Relaciones y cardinalidad</h4>
+    <div class="tscroll"><table>
+      <thead><tr><th>Relación</th><th>Cardinalidad</th><th>Lectura</th></tr></thead>
+      <tbody>
+        <tr><td>registronuevo → inscripciones</td><td class="mono">1 : N</td><td>Un alumno puede inscribirse a muchas clases.</td></tr>
+        <tr><td>clases → inscripciones</td><td class="mono">1 : N</td><td>Una clase recibe muchas inscripciones, hasta su capacidad.</td></tr>
+        <tr><td>registronuevo → asistencias</td><td class="mono">1 : N</td><td>Un alumno acumula muchas asistencias.</td></tr>
+        <tr><td>clases → asistencias</td><td class="mono">1 : N</td><td>Una clase registra la asistencia de varios alumnos.</td></tr>
+        <tr><td>registronuevo → abonos</td><td class="mono">1 : N</td><td>Un alumno compra muchos paquetes a lo largo del tiempo.</td></tr>
+        <tr><td>registronuevo → notificaciones</td><td class="mono">1 : N</td><td>Un alumno recibe muchos avisos.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Estructura del código QR</h4>
+    <p>Cada inscripción genera un código con tres partes separadas por dos puntos:</p>
+    <pre><code>alumno_id : clase_id : token
+
+token = md5( alumno_id . ':' . clase_id . 'trainingpoint2025' )</code></pre>
+    <p>El token impide que alguien fabrique un QR válido conociendo solo los identificadores. El sistema mantiene compatibilidad con el formato anterior de dos partes, usado antes del cambio del 24/07.</p>
+
+    <div class="callout warn">
+      <span class="ct">Verificar antes de entregar</span>
+      <p>El esquema relacional que sigue está reconstruido a partir de la documentación del proyecto. Antes del 30/09 conviene exportarlo directamente desde phpMyAdmin (pestaña «Exportar», formato SQL, solo estructura) y reemplazarlo, para que los tipos de dato coincidan exactamente con la base real.</p>
+    </div>
+
+    <pre><code>CREATE TABLE registronuevo (
+  id                    INT AUTO_INCREMENT PRIMARY KEY,
+  nombre                VARCHAR(60)  NOT NULL,
+  apellido              VARCHAR(60)  NOT NULL,
+  email                 VARCHAR(120) NOT NULL UNIQUE,
+  usuario               VARCHAR(60)  NOT NULL UNIQUE,
+  password              VARCHAR(255) NOT NULL,
+  telefono              VARCHAR(30),
+  genero                VARCHAR(20),
+  rol                   VARCHAR(20)  NOT NULL DEFAULT 'alumno',
+  creditos              INT          NOT NULL DEFAULT 0,
+  vencimiento_creditos  DATE,
+  apto_medico           TINYINT(1)   NOT NULL DEFAULT 0,
+  apto_medico_archivo   VARCHAR(255)
+);
+
+CREATE TABLE clases (
+  id         INT AUTO_INCREMENT PRIMARY KEY,
+  fecha      DATE       NOT NULL,
+  horario    TIME       NOT NULL,
+  capacidad  INT        NOT NULL DEFAULT 12,
+  activa     TINYINT(1) NOT NULL DEFAULT 1
+);
+
+CREATE TABLE inscripciones (
+  id         INT AUTO_INCREMENT PRIMARY KEY,
+  alumno_id  INT NOT NULL,
+  clase_id   INT NOT NULL,
+  fecha_alta DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (alumno_id) REFERENCES registronuevo(id),
+  FOREIGN KEY (clase_id)  REFERENCES clases(id),
+  UNIQUE KEY uq_inscripcion (alumno_id, clase_id)
+);
+
+CREATE TABLE asistencias (
+  id         INT AUTO_INCREMENT PRIMARY KEY,
+  alumno_id  INT NOT NULL,
+  clase_id   INT NOT NULL,
+  fecha_hora DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (alumno_id) REFERENCES registronuevo(id),
+  FOREIGN KEY (clase_id)  REFERENCES clases(id)
+);
+
+CREATE TABLE abonos (
+  id            INT AUTO_INCREMENT PRIMARY KEY,
+  alumno_id     INT NOT NULL,
+  cantidad      INT NOT NULL,
+  medio_pago    VARCHAR(30),
+  fecha         DATETIME DEFAULT CURRENT_TIMESTAMP,
+  vencimiento   DATE,
+  FOREIGN KEY (alumno_id) REFERENCES registronuevo(id)
+);
+
+CREATE TABLE notificaciones (
+  id        INT AUTO_INCREMENT PRIMARY KEY,
+  alumno_id INT NOT NULL,
+  mensaje   TEXT NOT NULL,
+  leida     TINYINT(1) NOT NULL DEFAULT 0,
+  fecha     DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (alumno_id) REFERENCES registronuevo(id)
+);
+
+CREATE TABLE recuperar (
+  id       INT AUTO_INCREMENT PRIMARY KEY,
+  email    VARCHAR(120) NOT NULL,
+  token    VARCHAR(255) NOT NULL,
+  expira   DATETIME     NOT NULL
+);</code></pre>
+
+    <div class="callout">
+      <span class="ct">Regla de negocio</span>
+      <p>El crédito se descuenta <b>al inscribirse</b>, no al escanear el QR, y se devuelve si el alumno cancela antes de registrar asistencia. De esta forma nadie ocupa un lugar sin costo mientras la clase se llena.</p>
+    </div>
+  </section>
+
+  <!-- ============ 6 ============ -->
+  <section class="doc" id="s6">
+    <h2><span class="num">06</span>Oferta de gestión</h2>
+
+    <h3>6.1 Planificación — Carta Gantt</h3>
+    <p>El proyecto se organizó en ocho etapas y cinco sprints, entre el 16/04 y el 30/10 de 2026, con 82 tareas y 235 horas de trabajo estimadas.</p>
+    <div class="kpi">
+      <div><span class="k">Etapas</span><span class="v">8</span></div>
+      <div><span class="k">Tareas</span><span class="v">82</span></div>
+      <div><span class="k">Horas</span><span class="v">235</span></div>
+      <div><span class="k">Completadas</span><span class="v">73<small>/82</small></span></div>
+      <div><span class="k">Período</span><span class="v" style="font-size:17px">16/04 → 30/10</span></div>
+    </div>
+    <div class="tscroll"><table>
+      <thead><tr><th class="mono">#</th><th>Etapa</th><th>Fechas</th><th class="num">Tareas</th><th class="num">Horas</th><th>Estado</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">E01</td><td>Definición del proyecto</td><td>16/04 – 16/05</td><td class="num">7</td><td class="num">28</td><td><span class="tag ok">Completa</span></td></tr>
+        <tr><td class="mono">E02</td><td>Mockup y diseño UX/UI</td><td>18/05 – 20/06</td><td class="num">10</td><td class="num">32</td><td><span class="tag ok">Completa</span></td></tr>
+        <tr><td class="mono">E03</td><td>Montaje del servidor y dependencias</td><td>22/06 – 01/07</td><td class="num">13</td><td class="num">26</td><td><span class="tag ok">Completa</span></td></tr>
+        <tr><td class="mono">E04</td><td>Segunda presentación — MVP</td><td>01/07 – 02/07</td><td class="num">6</td><td class="num">7</td><td><span class="tag ok">Completa</span></td></tr>
+        <tr><td class="mono">E05</td><td>Desarrollo de funcionalidades</td><td>14/07 – 09/08</td><td class="num">15</td><td class="num">52</td><td><span class="tag ok">Completa</span></td></tr>
+        <tr><td class="mono">E06</td><td>Definición del método de pago</td><td>28/07 – 09/08</td><td class="num">8</td><td class="num">19</td><td><span class="tag ok">Completa</span></td></tr>
+        <tr><td class="mono">E07</td><td>Ajustes del cliente y corrección de bugs</td><td>10/08 – 25/08</td><td class="num">14</td><td class="num">24</td><td><span class="tag ok">Completa</span></td></tr>
+        <tr><td class="mono">E08</td><td>Documentación y cierre</td><td>26/08 – 30/10</td><td class="num">9</td><td class="num">47</td><td><span class="tag media">En curso</span></td></tr>
+        <tr class="tot"><td class="mono"></td><td>Total</td><td>16/04 – 30/10</td><td class="num">82</td><td class="num">235</td><td></td></tr>
+      </tbody>
+    </table></div>
+    <h4>Carta Gantt en vivo</h4>
+    <p>La planificación completa, tarea por tarea, se mantiene en una planilla de Google Sheets. Lo que se ve acá abajo es esa misma planilla: si el equipo actualiza una fecha o marca una tarea como terminada, el cambio aparece en esta documentación sin volver a publicarla.</p>
+    <div class="embed" id="gantt-embed">
+      <div class="embph">
+        <span class="epk">Planilla en vivo</span>
+        <p><b>Carta Gantt de Training Point</b> — 82 tareas, 8 etapas, del 16/04 al 30/10 de 2026.</p>
+        <button type="button" id="gantt-load">Cargar la planilla acá</button>
+        <p class="epa"><a href="https://docs.google.com/spreadsheets/d/1tXueApmZvvwyiQTnYJDKIJvDLtjLzBITs1RIB1teXVo/edit?usp=sharing" target="_blank" rel="noopener">o abrirla en Google Sheets →</a></p>
+      </div>
+    </div>
+    <p class="embnote">También está disponible la <a href="https://claude.ai/code/artifact/23f2683d-a543-4289-a40b-92ae98306688">versión formateada de la carta Gantt</a>, con las horas por rol y la estimación económica desagregada.</p>
+
+    <h3>6.2 Infraestructura administrativa</h3>
+    <p>El equipo se organiza sin jerarquías: ambos integrantes participan de todas las decisiones y se reparten los seis roles formales según la tarea.</p>
+    <div class="tscroll"><table>
+      <thead><tr><th>Grupo</th><th>Roles</th><th>Integrantes</th></tr></thead>
+      <tbody>
+        <tr><td>Dirección y gestión</td><td>PM</td><td>Juan José Bosio · Joaquín Goyechea</td></tr>
+        <tr><td>Desarrollo</td><td>D01, D02, D03</td><td>Juan José Bosio · Joaquín Goyechea</td></tr>
+        <tr><td>Datos y diseño</td><td>BD, DUX</td><td>Juan José Bosio · Joaquín Goyechea</td></tr>
+      </tbody>
+    </table></div>
+    <h4>Herramientas de trabajo</h4>
+    <div class="tscroll"><table>
+      <thead><tr><th>Herramienta</th><th>Uso</th></tr></thead>
+      <tbody>
+        <tr><td>Google Sheets</td><td>Carta Gantt y estimación económica.</td></tr>
+        <tr><td>GitHub</td><td>Versionado del código y colaboración.</td></tr>
+        <tr><td>Figma</td><td>Diseño de referencia aportado por el cliente.</td></tr>
+        <tr><td>FileZilla</td><td>Subida de archivos al servidor por FTP.</td></tr>
+        <tr><td>SSH y Composer</td><td>Instalación de dependencias en el servidor.</td></tr>
+        <tr><td>phpMyAdmin</td><td>Administración de la base de datos.</td></tr>
+        <tr><td>WhatsApp</td><td>Canal de comunicación con el cliente entre reuniones.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- ============ 7 ============ -->
+  <section class="doc" id="s7">
+    <h2><span class="num">07</span>Oferta económica</h2>
+    <p class="lead">Proveedores y servicios que sostienen el sistema en funcionamiento.</p>
+
+    <h3>7.1 Hosting y conectividad</h3>
+    <div class="tscroll"><table>
+      <thead><tr><th>Proveedor</th><th>Servicio</th><th>Plan</th><th class="num">Costo mensual</th></tr></thead>
+      <tbody>
+        <tr><td>AlwaysData</td><td>Hosting web, base de datos MySQL y acceso SSH</td><td>Gratuito (100 MB)</td><td class="num">$0</td></tr>
+        <tr><td>AlwaysData</td><td>Subdominio <code>newlogin.alwaysdata.net</code></td><td>Incluido</td><td class="num">$0</td></tr>
+        <tr><td>Google</td><td>OAuth 2.0 para el inicio de sesión</td><td>Gratuito</td><td class="num">$0</td></tr>
+        <tr><td>api.qrserver.com</td><td>Generación de imágenes de códigos QR</td><td>Gratuito</td><td class="num">$0</td></tr>
+        <tr><td>Servidor SMTP</td><td>Envío de correos del sistema</td><td>Incluido en el hosting</td><td class="num">$0</td></tr>
+        <tr><td>Proveedor de internet</td><td>Conectividad del equipo de desarrollo</td><td>Hogareño</td><td class="num">$24.000</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout">
+      <span class="ct">Dato relevante para el cliente</span>
+      <p>La operación del sistema tiene <b>costo cero</b> de infraestructura: todo corre sobre planes gratuitos. Si el gimnasio creciera y necesitara más espacio o un dominio propio, el plan pago de AlwaysData y el registro de un dominio <code>.com.ar</code> serían los únicos costos a considerar.</p>
+    </div>
+
+    <h3>7.2 Insumos</h3>
+    <div class="tscroll"><table>
+      <thead><tr><th>Concepto</th><th>Detalle</th><th class="num">Costo</th></tr></thead>
+      <tbody>
+        <tr><td>Insumos materiales</td><td>Impresiones, papelería y materiales de las presentaciones.</td><td class="num">$15.000</td></tr>
+        <tr><td>Insumos tecnológicos</td><td>Hosting y dominio, cubiertos por el plan gratuito.</td><td class="num">$0</td></tr>
+        <tr><td>Entrega de productos</td><td>Traslados y materiales de la entrega final al cliente.</td><td class="num">$4.500</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>7.3 Componentes electrónicos</h3>
+    <p>No aplica. El proyecto es exclusivamente de software y no incorpora hardware propio.</p>
+  </section>
+
+  <!-- ============ 8 ============ -->
+  <section class="doc" id="s8">
+    <h2><span class="num">08</span>Estimación económica</h2>
+    <p class="lead">Valorización del esfuerzo según los valores hora de la cátedra, con dólar de referencia a $1.565.</p>
+
+    <h3>8.1 Costes de personal</h3>
+    <p>El coste de cada rol se calcula como <code>horas × valor hora × coeficiente × (1 + contingencia)</code>, con coeficiente 1 y contingencia del 5 %.</p>
+    <div class="tscroll"><table>
+      <thead><tr><th>Categoría</th><th class="num">Horas</th><th class="num">Valor hora</th><th class="num">Contin.</th><th class="num">Coste</th></tr></thead>
+      <tbody>
+        <tr><td>Project Manager</td><td class="num">62,8</td><td class="num">$46.950</td><td class="num">5 %</td><td class="num">$3.097.526,25</td></tr>
+        <tr><td>Administrador de BD</td><td class="num">9,3</td><td class="num">$50.080</td><td class="num">5 %</td><td class="num">$490.784,00</td></tr>
+        <tr><td>Diseñador UX/UI</td><td class="num">40,8</td><td class="num">$42.255</td><td class="num">5 %</td><td class="num">$1.811.683,12</td></tr>
+        <tr><td>Desarrollador 01 — Back End</td><td class="num">69,3</td><td class="num">$53.210</td><td class="num">5 %</td><td class="num">$3.873.688,00</td></tr>
+        <tr><td>Desarrollador 02 — Front/Back</td><td class="num">19,3</td><td class="num">$53.210</td><td class="num">5 %</td><td class="num">$1.080.163,00</td></tr>
+        <tr><td>Desarrollador 03 — Front End</td><td class="num">33,3</td><td class="num">$53.210</td><td class="num">5 %</td><td class="num">$1.862.350,00</td></tr>
+        <tr class="tot"><td>Subtotal personal</td><td class="num">235,0</td><td class="num"></td><td class="num"></td><td class="num">$12.216.194,38</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>8.2 Costes varios</h3>
+    <div class="tscroll"><table>
+      <thead><tr><th>Concepto</th><th class="num">Costo unit.</th><th class="num">Cantidad</th><th class="num">Contin.</th><th class="num">Coste</th></tr></thead>
+      <tbody>
+        <tr><td>Internet</td><td class="num">$24.000</td><td class="num">7 meses</td><td class="num">7 %</td><td class="num">$179.760,00</td></tr>
+        <tr><td>Insumos materiales</td><td class="num">$15.000</td><td class="num">1</td><td class="num">7 %</td><td class="num">$16.050,00</td></tr>
+        <tr><td>Insumos tecnológicos</td><td class="num">$0</td><td class="num">1</td><td class="num">7 %</td><td class="num">$0,00</td></tr>
+        <tr><td>Entrega de productos</td><td class="num">$4.500</td><td class="num">1</td><td class="num">7 %</td><td class="num">$4.815,00</td></tr>
+        <tr class="tot"><td>Subtotal varios</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num">$200.625,00</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>8.3 Total</h3>
+    <div class="kpi">
+      <div><span class="k">Costo total</span><span class="v" style="font-size:19px">$12.416.819</span></div>
+      <div><span class="k">Margen</span><span class="v">25 %</span></div>
+      <div><span class="k">Precio de venta</span><span class="v" style="font-size:19px">$16.555.759</span></div>
+      <div><span class="k">Esfuerzo</span><span class="v">235 <small>hs</small></span></div>
+    </div>
+    <p>El precio de venta se calcula como <code>costo ÷ (1 − 0,25)</code>, de modo que el margen represente el 25 % del precio final.</p>
+    <div class="callout">
+      <span class="ct">Nota</span>
+      <p>Esta valorización responde al ejercicio académico de la cátedra: aplica valores hora de mercado a un proyecto realizado por estudiantes. El cliente no abonó ese importe; el sistema se desarrolló como trabajo de fin de curso.</p>
+    </div>
+  </section>
+
+  <!-- ============ 9 ============ -->
+  <section class="doc" id="s9">
+    <h2><span class="num">09</span>Contrato</h2>
+
+    <h3>9.1 Objeto</h3>
+    <p>Desarrollo, publicación y entrega del sistema web Training Point para la gestión de turnos, asistencia, créditos y avisos del gimnasio de entrenamiento funcional del cliente, según el alcance definido en la sección 3.2 y los requisitos de la sección 05.</p>
+
+    <h3>9.2 Partes</h3>
+    <div class="tscroll"><table>
+      <thead><tr><th>Parte</th><th>Representada por</th><th>Rol en el acuerdo</th></tr></thead>
+      <tbody>
+        <tr><td>Equipo desarrollador</td><td>Juan José Bosio y Joaquín Goyechea — 7° Informática A</td><td>Diseña, desarrolla, publica y documenta el sistema.</td></tr>
+        <tr><td>Cliente</td><td>Dami — gimnasio de entrenamiento funcional</td><td>Define los requisitos, valida las entregas y opera el sistema.</td></tr>
+        <tr><td>Cátedra</td><td>Profesores de Evolución de Proyectos</td><td>Supervisa y evalúa el cumplimiento de las entregas.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>9.3 Alcance</h3>
+    <p>Se entrega lo enumerado en «El sistema incluye» (sección 3.2) y quedan expresamente fuera los puntos de «El sistema no incluye» y las limitaciones LIM01 a LIM07. Cualquier funcionalidad no listada allí se considera fuera del alcance y requiere un acuerdo nuevo.</p>
+
+    <h3>9.4 Plazos</h3>
+    <div class="tscroll"><table>
+      <thead><tr><th>Hito</th><th>Fecha</th><th>Estado</th></tr></thead>
+      <tbody>
+        <tr><td>Presentación del proyecto</td><td>16/05/2026</td><td><span class="tag ok">Cumplido</span></td></tr>
+        <tr><td>Validación del mockup con el cliente</td><td>20/06/2026</td><td><span class="tag ok">Cumplido</span></td></tr>
+        <tr><td>Entrega del MVP publicado</td><td>02/07/2026</td><td><span class="tag ok">Cumplido</span></td></tr>
+        <tr><td>Entrega de la versión beta al cliente</td><td>25/08/2026</td><td><span class="tag ok">Cumplido</span></td></tr>
+        <tr><td>Período de prueba con el cliente</td><td>Septiembre 2026</td><td><span class="tag media">En curso</span></td></tr>
+        <tr><td>Entrega de la documentación</td><td>30/09/2026</td><td><span class="tag media">En curso</span></td></tr>
+        <tr><td>Entrega final y presentación</td><td>30/10/2026</td><td><span class="tag baja">Pendiente</span></td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>9.5 Responsabilidades</h3>
+    <h4>Del equipo desarrollador</h4>
+    <ul>
+      <li>Entregar el sistema funcionando y accesible por internet.</li>
+      <li>Documentar el sistema y capacitar al cliente en su uso.</li>
+      <li>Corregir los errores detectados durante el período de prueba.</li>
+      <li>Resguardar los datos personales de los alumnos y no utilizarlos con otro fin.</li>
+    </ul>
+    <h4>Del cliente</h4>
+    <ul>
+      <li>Definir las reglas de negocio: paquetes, cupos, precios y vencimientos.</li>
+      <li>Probar el sistema en su lugar de trabajo y comunicar las devoluciones.</li>
+      <li>Verificar las transferencias en su banco antes de acreditar los créditos.</li>
+      <li>Custodiar las credenciales de su cuenta de administrador.</li>
+    </ul>
+
+    <h3>9.6 Criterios de aceptación</h3>
+    <ol>
+      <li>Un alumno puede registrarse, comprar un paquete, inscribirse a una clase y ver su código QR.</li>
+      <li>El administrador puede escanear ese QR y la asistencia queda registrada contra la clase correcta.</li>
+      <li>El administrador puede cargar un mes completo de clases en una sola operación.</li>
+      <li>El administrador puede acreditar créditos con una fecha de vencimiento elegida por él.</li>
+      <li>El sistema impide inscribirse sin créditos vigentes o a una clase completa.</li>
+      <li>El apto médico cargado por el alumno puede abrirse desde el perfil del administrador.</li>
+      <li>El sistema funciona correctamente desde el navegador de un celular.</li>
+    </ol>
+
+    <h3>9.7 Modificaciones</h3>
+    <p>Toda modificación del alcance se registra en la tabla de control de cambios (sección 01) y se valida con el cliente antes de implementarse. Los siete cambios registrados hasta la versión 1.0 siguieron ese procedimiento.</p>
+
+    <h3>9.8 Firmas</h3>
+    <p>La aceptación se formaliza de manera simbólica al cierre del período de prueba, una vez verificados los criterios de la sección 9.6, en el marco del trabajo académico de la cátedra.</p>
+  </section>
+
+  <!-- ============ 10 ============ -->
+  <section class="doc" id="s10">
+    <h2><span class="num">10</span>Bitácora del proyecto</h2>
+
+    <h3>10.1 Registro de entrevistas y reuniones</h3>
+    <div class="tscroll"><table>
+      <thead><tr><th>Fecha</th><th>Con quién</th><th>Objetivo</th><th>Modalidad</th></tr></thead>
+      <tbody>
+        <tr><td>03/05/26</td><td>Dami</td><td>Primera entrevista: entender cómo trabaja y qué necesita.</td><td>Presencial</td></tr>
+        <tr><td>06/05/26</td><td>Dami</td><td>Segunda entrevista: profundizar sobre pagos y control de asistencia.</td><td>Presencial</td></tr>
+        <tr><td>20/05/26</td><td>Dami</td><td>Relevamiento de requisitos: paquetes, vencimientos, apto médico y roles.</td><td>Presencial</td></tr>
+        <tr><td>20/06/26</td><td>Dami</td><td>Validación del mockup completo.</td><td>Presencial</td></tr>
+        <tr><td>04/08/26</td><td>Dami</td><td>Definición del método de pago tras descartar MercadoPago.</td><td>Mensajería</td></tr>
+        <tr><td>10/08/26</td><td>Dami</td><td>Devoluciones tras la primera prueba: logo, vencimiento y cuenta de administrador.</td><td>Mensajería</td></tr>
+        <tr><td>25/08/26</td><td>Dami</td><td>Reporte del error en la fecha de vencimiento de los créditos.</td><td>Mensajería</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>10.2 Minutas</h3>
+
+    <div class="minuta">
+      <div class="mh">Minuta 01 — Validación del mockup (Etapa E02)</div>
+      <dl>
+        <dt>Fecha</dt><dd>20/06/2026</dd>
+        <dt>Participantes</dt><dd>Bosio, Goyechea y Dami</dd>
+        <dt>Objetivo</dt><dd>Presentar el mockup completo en HTML y CSS y validar el recorrido del alumno y del administrador antes de programar sobre el servidor.</dd>
+        <dt>Temas</dt><dd>
+          <ul>
+            <li>Recorrido completo: login, registro, home, clases, QR, perfil y panel de administración.</li>
+            <li>Identidad visual heredada del diseño previo de Figma del cliente.</li>
+            <li>Confirmación de los paquetes de 4, 8 y 12 créditos.</li>
+          </ul>
+        </dd>
+        <dt>Decisiones</dt><dd>
+          <ul>
+            <li>Se aprueba el mockup y se conserva la línea visual original.</li>
+            <li>Se confirma que los créditos vencen y no se acumulan al mes siguiente.</li>
+            <li>El apto médico no se pide en el registro, porque el alumno puede no tenerlo todavía: se carga después desde el perfil.</li>
+          </ul>
+        </dd>
+        <dt>Próximos pasos</dt><dd>Migrar al servidor real y montar la base de datos.</dd>
+      </dl>
+    </div>
+
+    <div class="minuta">
+      <div class="mh">Minuta 02 — Definición del método de pago (Etapa E06)</div>
+      <dl>
+        <dt>Fecha</dt><dd>04/08/2026</dd>
+        <dt>Participantes</dt><dd>Bosio, Goyechea y Dami</dd>
+        <dt>Objetivo</dt><dd>Definir cómo se cobran los paquetes tras evaluar las alternativas de pago en línea.</dd>
+        <dt>Temas</dt><dd>
+          <ul>
+            <li>Integración con la API de MercadoPago: requiere cuenta de empresa, que el cliente no tiene ni quiere abrir.</li>
+            <li>Link de pago de MercadoPago: probado, funciona, pero cobra comisión.</li>
+            <li>Comisiones de las pasarelas del mercado: entre 3 % y 6 % por operación.</li>
+          </ul>
+        </dd>
+        <dt>Decisiones</dt><dd>
+          <ul>
+            <li>Se descarta el cobro automático en línea. No existe forma de procesarlo sin que un intermediario cobre comisión.</li>
+            <li>Se implementa transferencia bancaria al alias del cliente, con aviso al administrador, más pago en efectivo en el gimnasio.</li>
+            <li>La acreditación de los créditos queda a cargo del administrador tras verificar el pago en su banco.</li>
+          </ul>
+        </dd>
+        <dt>Próximos pasos</dt><dd>Programar el flujo de transferencia y los avisos por aplicación y correo.</dd>
+      </dl>
+    </div>
+
+    <div class="minuta">
+      <div class="mh">Minuta 03 — Devoluciones de la primera prueba (Etapa E07)</div>
+      <dl>
+        <dt>Fecha</dt><dd>10/08/2026</dd>
+        <dt>Participantes</dt><dd>Bosio, Goyechea y Dami</dd>
+        <dt>Objetivo</dt><dd>Recoger las observaciones del cliente después de usar el sistema por primera vez.</dd>
+        <dt>Temas</dt><dd>
+          <ul>
+            <li>Quedaban pantallas con un ícono provisorio en lugar del logo real.</li>
+            <li>El vencimiento de los créditos era siempre fin de mes y el cliente necesita elegirlo.</li>
+            <li>El cliente pidió recibir los avisos por WhatsApp en lugar de correo.</li>
+          </ul>
+        </dd>
+        <dt>Decisiones</dt><dd>
+          <ul>
+            <li>Reemplazar el ícono provisorio por el logo real en todas las pantallas.</li>
+            <li>Hacer configurable la fecha de vencimiento al acreditar créditos.</li>
+            <li>WhatsApp queda pendiente: la API oficial es paga por mensaje y exige verificar un número comercial. Se informa el costo al cliente para que decida.</li>
+          </ul>
+        </dd>
+        <dt>Próximos pasos</dt><dd>Aplicar los cambios y habilitar la cuenta de administrador del cliente.</dd>
+      </dl>
+    </div>
+
+    <h3>10.3 Registro de cambios sobre el mockup</h3>
+    <div class="tscroll"><table>
+      <thead><tr><th>Componente</th><th>Modificación</th><th>Justificación</th></tr></thead>
+      <tbody>
+        <tr><td>Barra de navegación inferior</td><td>Se agregó el botón «Admin», visible solo para el administrador.</td><td>Desde el celular no había forma de llegar al panel y el cliente no podía operar.</td></tr>
+        <tr><td>Pantalla de QR</td><td>Pasó de mostrar un código único del alumno a un código por inscripción.</td><td>Un alumno anotado a dos clases registraba siempre la asistencia en la equivocada.</td></tr>
+        <tr><td>Registro</td><td>Se quitó la carga del apto médico del formulario inicial.</td><td>El alumno puede no tenerlo al momento de registrarse; se sube después desde el perfil.</td></tr>
+        <tr><td>Panel de administración</td><td>Se eliminó el modal de gestión de alumnos y se reemplazó por una pantalla propia de perfil.</td><td>El modal dejaba restos visuales en el celular y era incómodo para ver el historial completo.</td></tr>
+        <tr><td>Pantalla de pago</td><td>Se reemplazó la pasarela por el alias con botón de copiado y el aviso «Ya transferí».</td><td>Cambio de método de pago acordado en la minuta 02.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>10.4 Hitos técnicos</h3>
+    <div class="tscroll"><table>
+      <thead><tr><th class="mono">Etapa</th><th>Hito</th><th>Cierre</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">E02</td><td>Mockup completo validado con el cliente.</td><td>20/06/26</td></tr>
+        <tr><td class="mono">E03</td><td>Base de datos creada y primera subida al servidor.</td><td>26/06/26</td></tr>
+        <tr><td class="mono">E03</td><td>Dependencias instaladas por SSH con Composer: quedan operativos el ingreso con Google y la recuperación de contraseña.</td><td>01/07/26</td></tr>
+        <tr><td class="mono">E04</td><td>MVP publicado y presentado.</td><td>02/07/26</td></tr>
+        <tr><td class="mono">E05</td><td>QR por inscripción funcionando: se resuelve el cruce de asistencias.</td><td>24/07/26</td></tr>
+        <tr><td class="mono">E05</td><td>Clases recurrentes y borrado múltiple operativos.</td><td>07/08/26</td></tr>
+        <tr><td class="mono">E06</td><td>Flujo de pago por transferencia y efectivo completo.</td><td>09/08/26</td></tr>
+        <tr><td class="mono">E07</td><td>Cuenta de administrador del cliente habilitada.</td><td>13/08/26</td></tr>
+        <tr><td class="mono">E07</td><td>Corrección del error de vencimiento de créditos. Cierre de la versión beta.</td><td>25/08/26</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Aprendizajes técnicos registrados</h4>
+    <ul>
+      <li><b>Dependencias pesadas por SSH, no por FTP.</b> Subir el directorio <code>vendor</code> por FileZilla tardaba más de dos horas y quedaba incompleto. Ejecutar <code>composer install --no-dev</code> por SSH lo resolvió en segundos.</li>
+      <li><b>Un identificador no alcanza cuando el contexto importa.</b> El QR que solo llevaba el alumno obligaba al sistema a adivinar la clase. Incluir ambos identificadores eliminó el problema de raíz.</li>
+      <li><b>Los errores silenciosos hay que hacerlos hablar.</b> La creación de clases fallaba sin mensaje: agregar <code>mysqli_error()</code> mostró que faltaban columnas en la tabla.</li>
+      <li><b>Un mismo síntoma puede tener dos causas.</b> El error de vencimiento eran dos bugs superpuestos, uno al guardar y otro al mostrar. Arreglar solo uno mantenía el síntoma y hacía parecer que la corrección no servía.</li>
+    </ul>
+
+    <h3>10.5 Período de prueba con el cliente</h3>
+    <p>Según lo requerido por la cátedra, el sistema se encuentra en prueba con el cliente en su lugar de trabajo por un mínimo de siete días. Las devoluciones se registran en la tabla siguiente y alimentan la lista de futuras mejoras de la sección 4.6.</p>
+    <div class="callout warn">
+      <span class="ct">A completar durante la prueba</span>
+      <p>Esta tabla se llena con lo que Dami vaya diciendo durante los días de prueba. Conviene anotar la fecha, qué observó exactamente y qué se decidió hacer, aunque la decisión sea no hacer nada.</p>
+    </div>
+    <div class="tscroll"><table>
+      <thead><tr><th class="mono">N°</th><th>Fecha</th><th>Devolución del cliente</th><th>Tipo</th><th>Decisión</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">D01</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td class="mono">D02</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td class="mono">D03</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td class="mono">D04</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td class="mono">D05</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+      </tbody>
+    </table></div>
+    <p>Tipos posibles: <span class="tag alta">Error</span> algo que no funciona, <span class="tag media">Mejora</span> algo que funciona pero puede ser mejor, <span class="tag baja">Nueva función</span> algo que no existe todavía.</p>
+  </section>
+
+  <!-- ============ 11 ============ -->
+  <section class="doc" id="s11">
+    <h2><span class="num">11</span>Garantía y soporte</h2>
+
+    <h3>11.1 Alcance de la garantía</h3>
+    <p>El equipo garantiza que el sistema cumple los requisitos funcionales de la sección 5.1 y los criterios de aceptación de la sección 9.6. Durante el período de garantía se corrigen sin cargo los defectos que impidan a una función comportarse como está documentada.</p>
+
+    <h3>11.2 Qué cubre y qué no</h3>
+    <div class="grid2">
+      <div class="minicard">
+        <h4>Cubierto</h4>
+        <ul>
+          <li>Errores de programación que impidan usar una función documentada.</li>
+          <li>Fallas en el cálculo de créditos, vencimientos o asistencias.</li>
+          <li>Problemas de visualización que impidan operar desde el celular.</li>
+          <li>Fallas en el envío de los correos del sistema.</li>
+        </ul>
+      </div>
+      <div class="minicard">
+        <h4>No cubierto</h4>
+        <ul>
+          <li>Funciones nuevas o cambios de alcance no acordados.</li>
+          <li>Caídas de servicios de terceros: hosting, Google, servidor de correo.</li>
+          <li>Errores de carga de datos por parte del administrador.</li>
+          <li>Pérdida de credenciales de la cuenta de administrador.</li>
+          <li>Las limitaciones LIM01 a LIM07, que son decisiones de alcance y no defectos.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>11.3 Canal y tiempos de respuesta</h3>
+    <div class="tscroll"><table>
+      <thead><tr><th>Severidad</th><th>Definición</th><th>Respuesta esperada</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag alta">Crítica</span></td><td>El sistema no está accesible o no se puede registrar asistencia ni inscribirse.</td><td>Mismo día.</td></tr>
+        <tr><td><span class="tag media">Media</span></td><td>Una función falla pero existe una forma alternativa de resolverlo.</td><td>Hasta 3 días.</td></tr>
+        <tr><td><span class="tag baja">Baja</span></td><td>Detalles visuales o mejoras menores.</td><td>Se agrupan para la siguiente actualización.</td></tr>
+      </tbody>
+    </table></div>
+    <p>El canal de contacto es el mismo que se usó durante todo el proyecto: mensajería directa con el equipo, más el formulario de contacto de la landing del proyecto.</p>
+
+    <h3>11.4 Resguardo de datos</h3>
+    <p>La base de datos puede exportarse desde phpMyAdmin en cualquier momento. Se recomienda al cliente conservar una copia mensual, especialmente antes de cargar un nuevo período de clases.</p>
+  </section>
+
+  <!-- ============ 12 ============ -->
+  <section class="doc" id="s12">
+    <h2><span class="num">12</span>Documentación de uso</h2>
+    <p class="lead">La documentación dirigida a quien usa el sistema se publica aparte, en tres piezas con propósitos distintos.</p>
+
+    <div class="tscroll"><table>
+      <thead><tr><th>Pieza</th><th>Para qué sirve</th><th>Formato</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>Guía de inicio rápido</b></td>
+          <td>Llevar a la persona de cero al primer uso en pocos minutos. Solo las tres acciones clave, una versión para el alumno y otra para el administrador.</td>
+          <td>Breve y visual, orientada a la acción. Va embebida como primera sección del manual.</td>
+        </tr>
+        <tr>
+          <td><b>Manual de uso</b></td>
+          <td>Referencia completa: las once áreas del sistema en detalle, la configuración y el mantenimiento, más la resolución de los once problemas más frecuentes.</td>
+          <td>Exhaustivo, estructurado por capítulos temáticos. Se consulta cuando hace falta profundidad.</td>
+        </tr>
+        <tr>
+          <td><b>Preguntas frecuentes</b></td>
+          <td>Resolver dudas puntuales sin leer todo lo demás. Veintiuna preguntas, cada una con respuesta autónoma y referencia al requisito o limitación que la explica.</td>
+          <td>Pregunta y respuesta, sin flujo lineal, agrupadas por tema.</td>
+        </tr>
+      </tbody>
+    </table></div>
+
+    <h3>12.1 Manuales de usuario</h3>
+    <p>Los dos manuales están publicados en el mismo servidor que el sistema, así que se abren desde cualquier navegador sin descargar nada y se pueden imprimir en PDF desde el propio navegador.</p>
+    <div class="manuales">
+      <a class="mcard" href="https://newlogin.alwaysdata.net/manual_alumno.html" target="_blank" rel="noopener">
+        <span class="mt">Manual del alumno →</span>
+        <span class="md">Cómo registrarse, cargar el apto médico, comprar créditos, anotarse a una clase y mostrar el código QR.</span>
+        <span class="mu">newlogin.alwaysdata.net/manual_alumno.html</span>
+      </a>
+      <a class="mcard" href="https://newlogin.alwaysdata.net/manual_administrador.html" target="_blank" rel="noopener">
+        <span class="mt">Manual del administrador →</span>
+        <span class="md">Cómo cargar clases sueltas o recurrentes, acreditar créditos con su vencimiento, escanear asistencias, ver el perfil de cada alumno y enviar avisos.</span>
+        <span class="mu">newlogin.alwaysdata.net/manual_administrador.html</span>
+      </a>
+    </div>
+
+    <h3>12.2 Preguntas frecuentes</h3>
+    <p>Las dudas puntuales que aparecieron durante las pruebas están resueltas en un documento aparte, cada una con su respuesta autónoma y la referencia al requisito o a la limitación que la explica.</p>
+    <div class="callout">
+      <span class="ct">Enlace</span>
+      <p><a href="https://claude.ai/code/artifact/9f9b9d1f-c225-4d81-8a51-556063025fe3#faq">Abrir las preguntas frecuentes</a> · en el mismo documento están también la <a href="https://claude.ai/code/artifact/9f9b9d1f-c225-4d81-8a51-556063025fe3#quickstart">guía de inicio rápido</a> y la <a href="https://claude.ai/code/artifact/9f9b9d1f-c225-4d81-8a51-556063025fe3#manual">versión extendida del manual</a>.</p>
+    </div>
+    <h3>12.3 Resumen del recorrido del alumno</h3>
+    <ol>
+      <li>Se registra o entra con su cuenta de Google.</li>
+      <li>Sube su apto médico desde el perfil, una sola vez.</li>
+      <li>Compra un paquete de créditos: transfiere al alias y avisa desde el sistema.</li>
+      <li>El administrador verifica el pago y le acredita los créditos.</li>
+      <li>Elige una clase de los próximos 30 días y se inscribe: se le descuenta un crédito.</li>
+      <li>El día de la clase muestra su código QR y el profesor lo escanea.</li>
+    </ol>
+    <h3>12.4 Resumen del recorrido del administrador</h3>
+    <ol>
+      <li>Carga las clases del período, de a una o de forma recurrente.</li>
+      <li>Recibe el aviso de un pago informado y lo verifica en su banco.</li>
+      <li>Acredita los créditos al alumno y elige la fecha de vencimiento.</li>
+      <li>El día de la clase escanea los códigos QR desde el panel.</li>
+      <li>Consulta el perfil de cualquier alumno para ver su historial y su apto médico.</li>
+      <li>Envía avisos a todos, a un alumno o a los inscriptos a una clase.</li>
+    </ol>
+  </section>
+
+  </main>
+</div>
+
+<footer class="docfoot">
+  <p><b>Training Point</b> · Documentación del proyecto, versión 1.0 · Juan José Bosio y Joaquín Goyechea · 7° Informática A · Actualizado el 17/09/2026.</p>
+</footer>
+
+<script>
+(function(){
+  var btn = document.getElementById('gantt-load');
+  if (btn) btn.addEventListener('click', function(){
+    var box = document.getElementById('gantt-embed');
+    box.innerHTML = '<iframe src="https://docs.google.com/spreadsheets/d/1tXueApmZvvwyiQTnYJDKIJvDLtjLzBITs1RIB1teXVo/preview" title="Carta Gantt de Training Point"></iframe>';
+  });
+})();
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var map = {};
+  links.forEach(function(a){
+    var id = a.getAttribute('href').slice(1);
+    var el = document.getElementById(id);
+    if (el) map[id] = a;
+  });
+  var sections = Object.keys(map).map(function(id){ return document.getElementById(id); });
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+
+  var visible = {};
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ visible[e.target.id] = e.isIntersecting; });
+    var current = null;
+    sections.forEach(function(s){ if (!current && visible[s.id]) current = s.id; });
+    links.forEach(function(a){ a.classList.remove('on'); });
+    if (current && map[current]) map[current].classList.add('on');
+  }, { rootMargin: '-10% 0px -70% 0px', threshold: 0 });
+
+  sections.forEach(function(s){ obs.observe(s); });
+})();
+</script>
+
+</body></html>
