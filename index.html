@@ -177,8 +177,8 @@ html{scroll-behavior:smooth;}
       <span><b>Equipo:</b> Juan José Bosio · Joaquín Goyechea</span>
       <span><b>Destinatarios:</b> gimnasios y centros de entrenamiento</span>
       <span><b>Sistema:</b> <a href="https://newlogin.alwaysdata.net">newlogin.alwaysdata.net</a></span>
-      <span><b>Versión:</b> 2.0 — Pulso</span>
-      <span><b>Actualizado:</b> 26/10/2026</span>
+      <span><b>Versión:</b> 2.1 — Pulso</span>
+      <span><b>Actualizado:</b> 27/10/2026</span>
     </div>
   </div>
 </div>
@@ -227,6 +227,7 @@ html{scroll-behavior:smooth;}
         <tr><td class="mono">1.5</td><td>23/10/26</td><td>Bosio / Goyechea</td><td>Validación de aptos médicos por el administrador (pendiente, aprobado o rechazado con motivo).</td></tr>
         <tr><td class="mono">1.6</td><td>24/10/26</td><td>Bosio / Goyechea</td><td>Lector QR rehecho para celulares: activación por botón, escaneo continuo y lectura por foto como respaldo.</td></tr>
         <tr><td class="mono">2.0</td><td>26/10/26</td><td>Bosio / Goyechea</td><td>Avisos automáticos por WhatsApp y en la app (recordatorio de clase, pocos créditos, sin créditos, vencimiento, pago y apto) con simulador para demostraciones. Pantalla de configuración rediseñada.</td></tr>
+        <tr><td class="mono">2.1</td><td>27/10/26</td><td>Bosio / Goyechea</td><td>Botón propio para darse de baja de una clase. El crédito se devuelve solo si faltan 20 horas o más (configurable).</td></tr>
       </tbody>
     </table></div>
   </section>
@@ -492,7 +493,7 @@ html{scroll-behavior:smooth;}
         <tr><td class="mono">RF06</td><td>El administrador debe poder borrar clases de a una o seleccionando varias a la vez.</td><td><span class="tag media">Media</span></td><td class="mono">C1</td></tr>
         <tr><td class="mono">RF07</td><td>El alumno debe ver las clases disponibles de los próximos 30 días con su cupo restante.</td><td><span class="tag alta">Alta</span></td><td class="mono">C2</td></tr>
         <tr><td class="mono">RF08</td><td>El alumno debe poder inscribirse a una clase si tiene crédito disponible y no vencido.</td><td><span class="tag alta">Alta</span></td><td class="mono">C2, C3</td></tr>
-        <tr><td class="mono">RF09</td><td>El sistema debe descontar un crédito al inscribirse y devolverlo si el alumno cancela antes de registrar asistencia.</td><td><span class="tag alta">Alta</span></td><td class="mono">C3</td></tr>
+        <tr><td class="mono">RF09</td><td>El sistema debe descontar un crédito al inscribirse y permitir darse de baja hasta el inicio de la clase: si faltan 20 horas o más (configurable) devuelve el crédito; si faltan menos, libera el lugar sin devolverlo.</td><td><span class="tag alta">Alta</span></td><td class="mono">C3</td></tr>
         <tr><td class="mono">RF10</td><td>El sistema debe impedir la inscripción cuando la clase alcanzó su capacidad.</td><td><span class="tag alta">Alta</span></td><td class="mono">C2</td></tr>
         <tr><td class="mono">RF11</td><td>El administrador debe poder cargar, descontar o cambiar el vencimiento de los créditos de un alumno a mano (por ejemplo, para un pago en efectivo en el gimnasio).</td><td><span class="tag alta">Alta</span></td><td class="mono">C3, C5</td></tr>
         <tr><td class="mono">RF12</td><td>El sistema debe generar un código QR distinto por cada inscripción, que identifique al alumno y a la clase.</td><td><span class="tag alta">Alta</span></td><td class="mono">C4</td></tr>
@@ -551,7 +552,7 @@ html{scroll-behavior:smooth;}
     <p>El mockup completo se construyó en HTML y CSS —no solo como imagen— con todas las pantallas: login, registro, home, listado de clases, QR, perfil y panel de administración. Fue validado con el cliente el 20/06/2026 antes de empezar a programar sobre el servidor real.</p>
     <div class="callout">
       <span class="ct">Ver la interfaz</span>
-      <p>El sistema funcionando se puede recorrer en <a href="https://newlogin.alwaysdata.net">newlogin.alwaysdata.net</a>, y la presentación del producto está en la <a href="https://juanjoybeto.github.io/training-point-landing/">landing de Pulso</a>.</p>
+      <p>El sistema funcionando se puede recorrer en <a href="https://newlogin.alwaysdata.net">newlogin.alwaysdata.net</a>, y la presentación del producto está en la <a href="https://juanjoybeto.github.io/pulso-landing/">landing de Pulso</a>.</p>
     </div>
 
     <h3>5.5 Interfaces de hardware</h3>
@@ -726,6 +727,7 @@ CREATE TABLE configuracion (
   whatsapp_activo tinyint(1) NOT NULL DEFAULT 0,
   dias_aviso_vencimiento int(11) NOT NULL DEFAULT 3,
   creditos_aviso int(11) NOT NULL DEFAULT 3,
+  horas_cancelacion int(11) NOT NULL DEFAULT 20,
   PRIMARY KEY (id)
 );
 CREATE TABLE packs (
@@ -764,7 +766,7 @@ CREATE TABLE whatsapp_log (
 
     <div class="callout">
       <span class="ct">Regla de negocio</span>
-      <p>El crédito se descuenta <b>al inscribirse</b>, no al escanear el QR, y se devuelve si el alumno cancela antes de registrar asistencia. De esta forma nadie ocupa un lugar sin costo mientras la clase se llena.</p>
+      <p>El crédito se descuenta <b>al inscribirse</b>, no al escanear el QR. Si el alumno se da de baja con 20 horas de anticipación o más, se le devuelve; con menos, libera el lugar pero pierde el crédito. Así nadie ocupa un lugar sin costo y las bajas de último momento no perjudican al gimnasio.</p>
     </div>
   </section>
 
@@ -1220,7 +1222,7 @@ CREATE TABLE whatsapp_log (
         <tr><td><span class="tag baja">Baja</span></td><td>Detalles visuales o mejoras menores.</td><td>Se agrupan para la siguiente actualización.</td></tr>
       </tbody>
     </table></div>
-    <p>El canal de contacto es la mensajería directa con el equipo y el formulario de contacto de la <a href="https://juanjoybeto.github.io/training-point-landing/#contacto">landing de Pulso</a>.</p>
+    <p>El canal de contacto es la mensajería directa con el equipo y el formulario de contacto de la <a href="https://juanjoybeto.github.io/pulso-landing/#contacto">landing de Pulso</a>.</p>
 
     <h3>11.4 Resguardo de datos</h3>
     <p>La base de datos puede exportarse desde phpMyAdmin en cualquier momento. Se recomienda a cada gimnasio conservar una copia mensual, especialmente antes de cargar un nuevo período de clases.</p>
@@ -1296,7 +1298,7 @@ CREATE TABLE whatsapp_log (
 </div>
 
 <footer class="docfoot">
-  <p><b>Pulso</b> · Documentación del proyecto, versión 2.0 · Juan José Bosio y Joaquín Goyechea · 7° Informática A · Actualizado el 26/10/2026.</p>
+  <p><b>Pulso</b> · Documentación del proyecto, versión 2.1 · Juan José Bosio y Joaquín Goyechea · 7° Informática A · Actualizado el 27/10/2026.</p>
 </footer>
 
 <script>
